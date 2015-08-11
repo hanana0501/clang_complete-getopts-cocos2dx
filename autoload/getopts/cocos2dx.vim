@@ -1,24 +1,22 @@
-" clang_complete-getopts-ios - clang_complete plugin that help iOS programming
-" Version: 0.1.0
-" Copyright (C) 2013 tokorom <http://www.tokorom.me/>
+" clang_complete-getopts-cocos2dx - clang_complete plugin that help cocos2d-x programming
 
 " Options  "{{{1
 
-if !exists('g:clang_complete_getopts_ios_default_options')
-  let g:clang_complete_getopts_ios_default_options = '-fblocks -fobjc-arc -fobjc-nonfragile-abi -fno-builtin -D__MACH__ -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -x objective-c -std=gnu99 -ObjC'
+if !exists('g:clang_complete_getopts_cocos2dx_default_options')
+  let g:clang_complete_getopts_cocos2dx_default_options = '-fblocks -std=c++11 stdlib=libc++ -w -I /usr/local/Cellar/glfw3/3.1.1/include/GLFW/'
 endif
 
-if !exists('g:clang_complete_getopts_ios_sdk_directory')
-  let g:clang_complete_getopts_ios_sdk_directory = '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk'
+if !exists('g:clang_complete_getopts_cocos2dx_sdk_directory')
+  let g:clang_complete_getopts_cocos2dx_sdk_directory = '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.3.sdk'
 endif
 
-if !exists('g:clang_complete_getopts_ios_ignore_directories')
-  let g:clang_complete_getopts_ios_ignore_directories = ['^\.git', '\.xcodeproj', '^build', '\.lproj']
+if !exists('g:clang_complete_getopts_cocos2dx_ignore_directories')
+  let g:clang_complete_getopts_cocos2dx_ignore_directories = ['^\.git', '\.xcodeproj', '^build', '\.lproj']
 endif
 
 " Public functions "{{{1
 
-function! getopts#ios#getopts()
+function! getopts#cocos2dx#getopts()
   call s:AddDefaultOptions()
   call s:AddSdkOptions()
   call s:AddPreCompiledHeaders()
@@ -33,12 +31,12 @@ function! s:AddCurrentDirectoryToIncludePathsRecursively()
 endfunction
 
 function! s:AddDefaultOptions()
-  let b:clang_user_options .= ' ' . g:clang_complete_getopts_ios_default_options
+  let b:clang_user_options .= ' ' . g:clang_complete_getopts_cocos2dx_default_options
 endfunction
 
 function! s:AddSdkOptions()
-  let b:clang_user_options .= ' -isysroot ' . g:clang_complete_getopts_ios_sdk_directory
-  let b:clang_user_options .= ' -F' . g:clang_complete_getopts_ios_sdk_directory . '/System/Library/Frameworks'
+  let b:clang_user_options .= ' -isysroot ' . g:clang_complete_getopts_cocos2dx_sdk_directory
+  let b:clang_user_options .= ' -F' . g:clang_complete_getopts_cocos2dx_sdk_directory . '/System/Library/Frameworks'
 endfunction
 
 function! s:AddPreCompiledHeaders()
@@ -70,7 +68,7 @@ endfunction
 
 function! s:IsIgnoreDirectory(dir)
   let dir = a:dir
-  let ignore_dirs = g:clang_complete_getopts_ios_ignore_directories
+  let ignore_dirs = g:clang_complete_getopts_cocos2dx_ignore_directories
   for ignore_dir in ignore_dirs
     if dir =~ ignore_dir
       return 1
