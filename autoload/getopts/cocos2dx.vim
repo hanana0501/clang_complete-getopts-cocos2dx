@@ -2,7 +2,7 @@
 
 " Options  "{{{1
 autocmd BufNewFile,BufRead *.mm echomsg "mm"
-autocmd BufNewFIel,BufRead *.cpp echomsg "cpp"
+autocmd BufNewFile,BufRead *.cpp echomsg "cpp"
 autocmd BufNewFile,BufRead *.m echomsg "m"
 
 if !exists('g:clang_complete_getopts_cocos2dx_default_options')
