@@ -3,7 +3,7 @@
 " Options  "{{{1
 
 if !exists('g:clang_complete_getopts_cocos2dx_default_options')
-  let g:clang_complete_getopts_cocos2dx_default_options = '-fblocks -std=c++11 stdlib=libc++ -w -I /usr/local/Cellar/glfw3/3.1.1/include/GLFW/'
+  let g:clang_complete_getopts_cocos2dx_default_options = '-fblocks -std=c++11 stdlib=libc++ -w'
 endif
 
 if !exists('g:clang_complete_getopts_cocos2dx_sdk_directory')
